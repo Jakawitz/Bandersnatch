@@ -1,7 +1,7 @@
 from base64 import b64decode
 import os
 
-from Fortuna import random_int, random_float
+from random import randint as random_int, uniform as random_float
 from MonsterLab import Monster
 from flask import Flask, render_template, request
 from pandas import DataFrame
@@ -10,7 +10,7 @@ from app.data import Database
 from app.graph import chart
 from app.machine import Machine
 
-SPRINT = 0
+SPRINT = 1
 APP = Flask(__name__)
 
 
