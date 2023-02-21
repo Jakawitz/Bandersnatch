@@ -17,12 +17,7 @@ class Database:
 
     def seed(self, amount):
         # fill with mock data
-        doc_list = []
-        while amount > 0:
-            man = Monster()
-            doc_list.append(man.to_dict())
-            amount -= 1
-        self.collection.insert_many(doc_list)
+        self.collection.insert_many(Monster().to_dict() for _ in range(amount))
 
     def reset(self):
         # mass delete mock data
