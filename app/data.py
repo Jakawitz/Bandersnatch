@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from MonsterLab import Monster
 from pandas import DataFrame
 from pymongo import MongoClient
-import random
 
 
 class Database:
