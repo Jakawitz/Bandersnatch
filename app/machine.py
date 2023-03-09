@@ -1,17 +1,29 @@
+import re
+
+import joblib
+from pandas import DataFrame
+from sklearn.ensemble import RandomForestClassifier
+
+
 class Machine:
 
-    def __init__(self, df):
-        pass
+    def __init__(self, df: DataFrame):
+        self.name = "Random Forest"
+        target = df["Rarity"]
+        features = df.drop(columns=["Rarity"])
+        self.model = RandomForestClassifier()
+        self.model.fit(features, target)
 
-    def __call__(self, feature_basis):
-        pass
+    def __call__(self, feature_basis: DataFrame):
+        prediction, *_ = self.model.predict(feature_basis)
+        return prediction
 
     def save(self, filepath):
-        pass
+        joblib.dump(self.model, filepath)
 
     @staticmethod
     def open(filepath):
-        pass
+        joblib.load(filename=filepath)
 
     def info(self):
-        pass
+        return f"Model Used: {self.name}\n Timestamp {self.df['Timestamp']}"

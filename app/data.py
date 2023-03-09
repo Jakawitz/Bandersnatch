@@ -41,4 +41,4 @@ class Database:
 if __name__ == '__main__':
     db = Database()
     db.reset()
-    db.seed(amount=1000)
+    db.seed(amount=3000)

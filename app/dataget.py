@@ -41,8 +41,8 @@ class Database:
 
 if __name__ == '__main__':
     db = Database()
-    db.reset()
-    db.seed(amount=1000)
+    # db.reset()
+    # db.seed(amount=3000)
     with open('data.json', "w", encoding="utf-8") as f:
         i = db.dataframe().to_json()
         json.dump(i, f)
