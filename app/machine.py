@@ -18,13 +18,15 @@ class Machine:
         return prediction, confidence
 
     def save(self, filepath):
-        joblib.dump(self.model, filepath)
+        joblib.dump(self, filepath)
 
     @staticmethod
     def open(filepath):
-        model = joblib.load(filename=filepath)
-        return model
+        return joblib.load(filename=filepath)
 
     def info(self, df):
-        return f"Model Used: {self.name} " \
-               f"Timestamp: {df['Timestamp'][0]}"
+        output = (
+            f"Model Used: {self.name} ",
+            f"Timestamp: {df['Timestamp'][0]}"
+        )
+        return "<br>".join(output)

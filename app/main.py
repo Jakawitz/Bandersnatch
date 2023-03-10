@@ -68,13 +68,15 @@ def model():
         return render_template("model.html")
     db = Database()
     options = ["Level", "Health", "Energy", "Sanity", "Rarity"]
-    filepath = os.path.join("model.joblib")
+    filepath = os.path.join("app", "model.joblib")
+    df = db.dataframe()
+
     if not os.path.exists(filepath):
-        df = db.dataframe()
         machine = Machine(df[options])
         machine.save(filepath)
     else:
         machine = Machine.open(filepath)
+
     stats = [round(random_float(1, 250), 2) for _ in range(3)]
     level = request.values.get("level", type=int) or random_int(1, 20)
     health = request.values.get("health", type=float) or stats.pop()
