@@ -68,7 +68,7 @@ def model():
         return render_template("model.html")
     db = Database()
     options = ["Level", "Health", "Energy", "Sanity", "Rarity"]
-    filepath = os.path.join("app", "model.joblib")
+    filepath = os.path.join("model.joblib")
     if not os.path.exists(filepath):
         df = db.dataframe()
         machine = Machine(df[options])
@@ -83,7 +83,7 @@ def model():
     prediction, confidence = machine(DataFrame(
         [dict(zip(options, (level, health, energy, sanity)))]
     ))
-    info = machine.info()
+    info = machine.info(df)
     return render_template(
         "model.html",
         info=info,

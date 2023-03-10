@@ -120,3 +120,4 @@ dmypy.json
 cython_debug/
 app/dataget.py
 app/data.json
+app/model.joblib
